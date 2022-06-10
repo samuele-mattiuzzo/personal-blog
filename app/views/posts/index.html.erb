@@ -1,14 +1,40 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
-</div>
+	<!--Container-->
+	<div class="container w-full md:max-w-3xl mx-auto pt-10">
+  <%= link_to "New post", new_post_path %>
+    <% @posts.each do |post| %>
+		  <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
 
-<%= link_to "New post", new_post_path %>
+			<!--Title-->
+			<div class="font-sans">
+						<h1 class="font-bold font-sans break-normal text-green-500 pt-6 pb-1 text-3xl md:text-4xl no-underline hover:underline uppercase">
+              <%= link_to post.title, post, class: "no-underline hover:underline" %>
+            </h1>
+						<p class="text-xs font-light text-gray-400 italic">on <%= post.created_at.strftime('%a %d %b, %Y') %></p>
+			</div>
+
+			<!--Lead Para-->
+			<p class="py-6">
+        <%= post.description %>
+      </p>
+
+      <div class="text-base md:text-sm text-gray-500 px-4 py-2">
+        Tags: <a href="#" class="text-base md:text-sm text-green-500 no-underline hover:underline">Link</a> . <a href="#" class="text-base md:text-sm text-green-500 no-underline hover:underline">Link</a>
+      </div>
+
+		</div>
+
+    <% end %>
+		<!--Next & Prev Links -->
+		<div class="font-sans flex justify-between content-center px-4 pt-12 pb-12">
+			<div class="text-left">
+				<p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">&lt; Older posts</a></p>
+			</div>
+			<div class="text-right">
+				<p><a href="#" class="break-normal text-base md:text-sm text-green-500 font-bold no-underline hover:underline">Newer posts &gt;</a></p>
+			</div>
+		</div>
+		<!--/Next & Prev Links-->
+	</div>
+	<!--/container-->
